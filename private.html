@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Private Dataset Access</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+margin-top:100px;
+background:#f4f6f9;
+}
+
+input{
+padding:10px;
+margin:5px;
+font-size:16px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
+}
+
+#dataset{
+display:none;
+}
+
+</style>
+
+<script>
+
+function checkLogin(){
+
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user==="pl4" && pass==="pl4"){
+
+document.getElementById("loginBox").style.display="none";
+document.getElementById("dataset").style.display="block";
+
+}
+
+else{
+
+alert("Incorrect username or password");
+
+}
+
+}
+
+</script>
+
+</head>
+
+
+<body>
+
+<h1>Private Dataset Access</h1>
+
+<div id="loginBox">
+
+<p>Please enter username and password</p>
+
+<input id="username" placeholder="Username">
+
+<br>
+
+<input id="password" type="password" placeholder="Password">
+
+<br><br>
+
+<button onclick="checkLogin()">Login</button>
+
+<br><br>
+
+<a href="index.html">Back to Home</a>
+
+</div>
+
+
+<div id="dataset">
+
+<h2>Private Marrow Dataset</h2>
+
+<p>Hyp vs WT marrow differential expression dataset</p>
+
+<a href="https://systems-osteology-data.s3.eu-central-1.amazonaws.com/private_MarrowDEG_Hyp_vs_WT_Wilcoxon_scVI_adjP0.01_logFC2.5.csv">
+<button>Download Private Dataset</button>
+</a>
+
+</div>
+
+</body>
+
+</html>
