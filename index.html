@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skeleton Main Page</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+<a href="https://osteologie.lbg.ac.at/?lang=en" target="_blank" class="logo-link">
+  <img src="images/DE_Osteo_CMYK_WeissGrau.png" alt="Logo" class="logo-img">
+</a>
+
+
+  <!-- Skeleton in center -->
+  <div class="skeleton-container">
+
+    <div class="core-light"></div>
+
+    <img 
+      src="images/f-skeletal.png" 
+      data-static="images/f-skeletal.png"
+      data-gif="images/f-skeletal.gif" 
+      class="skeleton-img"
+      id="skeleton"
+      alt="Skeleton">
+    
+      <!-- FIXED TITLE (always visible) -->
+  <div class="skeleton-title">
+    <h2>Systems Osteology</h2>
+  </div>
+
+  <!-- Subtitle (hidden initially) -->
+  <div class="skeleton-subtitle" id="skeletonSubtitle">
+    <p>Integrative research platform for multi-scale bone biology</p>
+  </div>
+
+
+        <!-- Proteomics overlay -->
+  <img 
+    src="images/final_proteomics.png"
+    class="overlay-img"
+    alt="Proteomics">
+
+<!-- Floating Research Title -->
+<div class="overlay-label" id="researchLabel">
+  Research Focus
+</div>
+
+<!-- Hidden Research Content -->
+<div class="overlay-content" id="researchContent">
+  <h2>Research Focus</h2>
+  <div class="research-grid">
+    <div class="card">Spatial Omics</div>
+    <div class="card">Bone Remodeling</div>
+    <div class="card">Systems Biology</div>
+    <div class="card">Computational Modeling</div>
+  </div>
+</div>
+
+
+
+<!-- DNA / Projects overlay -->
+<img 
+  src="images/final-DNA.png"
+  class="overlay-img projects-img"
+  alt="Projects">
+
+<!-- Projects Label -->
+<div class="overlay-label projects-label">
+  Projects
+</div>
+
+<!-- Hidden Projects Content -->
+<div class="overlay-content" id="projectsContent">
+  <h2>Projects</h2>
+
+  <div class="project">
+    <h3>BoneReloaded</h3>
+    <p>Advanced spatial multi-omics analysis of bone remodeling.</p>
+    <a href="https://bonereloaded.github.io" target="_blank">Visit Project</a>
+  </div>
+
+  <div class="project">
+    <h3>Mouse Bone Atlas</h3>
+    <p>Mapping cellular and molecular composition of mouse bone.</p>
+    <a href="https://bonekidney-axis.github.io" target="_blank">Visit Project</a>
+  </div>
+
+</div>
+
+
+<!-- Metabolomics / Publications overlay -->
+<img 
+  src="images/final-metabol.png"
+  class="overlay-img publications-img"
+  alt="Publications">
+
+<!-- Publications Label -->
+<div class="overlay-label publications-label">
+  Publications
+</div>
+
+<!-- Publications Content -->
+<div class="overlay-content" id="publicationsContent">
+  <h2>Publications</h2>
+
+  <ul class="pub-list">
+    <li><strong>Erben et al.</strong> Nature, 2025</li>
+  </ul>
+
+</div>
+
+<!-- RNA / Contact overlay -->
+<img 
+  src="images/final-RNA.png"
+  class="overlay-img contact-img"
+  alt="Contact">
+
+<!-- Contact Label -->
+<div class="overlay-label contact-label">
+  Connect
+</div>
+
+<!-- Contact Content -->
+<div class="overlay-content" id="contactContent">
+  <h2>Contact</h2>
+
+  <form class="contact-form" action="https://formspree.io/f/mnjoqrqp" method="POST">
+    
+    <input type="text" name="name" placeholder="Your Name" required>
+    
+    <input type="email" name="email" placeholder="Your Email" required>
+    
+    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+    
+    <button type="submit">Send Message</button>
+
+  </form>
+</div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+  <!-- JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const img = document.getElementById('skeleton');
+
+      img.addEventListener('mouseenter', () => {
+        img.src = img.dataset.gif;
+      });
+
+      img.addEventListener('mouseleave', () => {
+        img.src = img.dataset.static;
+      });
+    });
+  </script>
+
+<script>
+const overlays = document.querySelectorAll('.overlay-img');
+const contents = document.querySelectorAll('.overlay-content');
+
+// OPEN popup
+overlays.forEach((overlay) => {
+  overlay.addEventListener('click', (e) => {
+
+    e.stopPropagation(); // prevent background click
+
+    // close all first
+    contents.forEach(c => c.classList.remove('active'));
+
+    // open correct one
+    if (overlay.classList.contains('projects-img')) {
+      document.getElementById('projectsContent').classList.add('active');
+
+    } else if (overlay.classList.contains('publications-img')) {
+      document.getElementById('publicationsContent').classList.add('active');
+
+    } else if (overlay.classList.contains('contact-img')) {
+      document.getElementById('contactContent').classList.add('active');
+
+    } else {
+      document.getElementById('researchContent').classList.add('active');
+    }
+
+  });
+});
+
+// PREVENT closing when clicking inside popup
+contents.forEach((content) => {
+  content.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+});
+
+// CLOSE when clicking anywhere else
+document.addEventListener('click', () => {
+  contents.forEach(c => c.classList.remove('active'));
+});
+</script>
+
+
+</body>
+</html>
