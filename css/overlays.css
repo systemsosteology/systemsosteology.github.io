@@ -9,26 +9,26 @@
 
 /* === Research (left big) === */
 .overlay-img:not(.projects-img):not(.publications-img):not(.contact-img) {
-  transform: translate(-50%, -50%) translate(188px, -130px);
-  width: 360px;
+  transform: translate(-50%, -50%) translate(138px, -110px);
+  width: 260px;
 }
 
 /* === Projects (top-left small) === */
 .projects-img {
-  transform: translate(-50%, -50%) translate(-175px, -160px) rotate(130deg);
-  width: 120px;
+  transform: translate(-50%, -50%) translate(-120px, -120px) rotate(120deg);
+  width: 80px;
 }
 
 /* === Publications (bottom-left) === */
 .publications-img {
-  transform: translate(-50%, -50%) translate(-175px, 20px) rotate(-55deg);
-  width: 300px;
+  transform: translate(-50%, -50%) translate(-125px, 10px) rotate(-55deg);
+  width: 250px;
 }
 
 /* === Contact (right side) === */
 .contact-img {
-  transform: translate(-50%, -50%) translate(135px, 10px) rotate(210deg);
-  width: 260px;
+  transform: translate(-50%, -50%) translate(105px, 10px) rotate(210deg);
+  width: 220px;
 }
 
 /* Hover */
@@ -50,12 +50,12 @@
 
 /* Individual label offsets */
 .projects-label {
-  transform: translate(-220px, -284px);
+  transform: translate(-200px, -204px);
   color: rgb(40, 165, 243);
 }
 
 .publications-label {
-  transform: translate(-310px, 110px);
+  transform: translate(-280px, 100px);
   color: rgb(213, 35, 35);
 }
 
