@@ -2,8 +2,10 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;        /* full screen only */
-  overflow: hidden;     /* 🚀 disables scroll */
+
+  min-height: 100vh;   /* instead of fixed height */
+  overflow: auto;      /* 🔥 allow scroll if needed */
+
   background-color: #112A46;
   color: white;
   font-family: Arial, sans-serif;

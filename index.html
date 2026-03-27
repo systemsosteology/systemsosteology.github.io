@@ -224,12 +224,25 @@ document.addEventListener('click', () => {
 function scaleScene() {
   const scene = document.querySelector('.scene');
 
-  const scaleX = window.innerWidth / 1400;
-  const scaleY = window.innerHeight / 900;
+  const baseWidth = 1400;
+  const baseHeight = 900;
 
-  const scale = Math.min(scaleX, scaleY);
+  const scaleX = window.innerWidth / baseWidth;
+  const scaleY = window.innerHeight / baseHeight;
+
+  let scale = Math.min(scaleX, scaleY);
+
+  // 🔥 IMPORTANT: don't shrink too much
+  scale = Math.max(scale, 0.75); 
 
   scene.style.transform = `scale(${scale})`;
+
+  // 🔥 if screen is too small → allow scrolling instead of shrinking more
+  if (scale <= 0.75) {
+    document.body.style.overflow = "auto";
+  } else {
+    document.body.style.overflow = "hidden";
+  }
 }
 
 window.addEventListener('resize', scaleScene);
