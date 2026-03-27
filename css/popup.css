@@ -29,8 +29,8 @@
 
 #projectsContent {
   background: rgba(110, 199, 255, 0.95);
-    transform: translate(-50%, -50%) translate(-275px, -260px);
-
+    transform: translate(-50%, -50%) translate(-320px, -100px);
+z-index: 10001 ;
 }
 
 
