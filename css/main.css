@@ -12,24 +12,25 @@ body {
 }
 
 .scene-wrapper {
-  min-height: 100dvh;
+  min-height: 100dvh;              /* real visible height */
+  width: 100%;
 
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 
-  align-items: flex-start;   /* 🔥 KEY FIX (not center anymore) */
+  padding-top: calc(env(safe-area-inset-top) + 40px);
+  padding-bottom: 40px;
 
-  padding-top: 80px;
   box-sizing: border-box;
 }
 
 .scene {
-  width: 1400px;   /* 🔥 your design base width */
-  height: 900px;   /* 🔥 your design base height */
+  width: 1400px;
+  height: 900px;
 
   position: relative;
-
-  transform-origin: center center;
+  transform-origin: top center;   /* 🔥 important change */
 }
 
 /* =========================
@@ -532,4 +533,20 @@ body {
 
   filter: blur(20px);
   opacity: 0.6;
+}
+
+
+
+@media (max-width: 900px) {
+  body {
+    overflow: auto !important;
+  }
+
+  .scene {
+    transform: scale(1) !important;
+  }
+
+  .scene-wrapper {
+    align-items: flex-start;
+  }
 }

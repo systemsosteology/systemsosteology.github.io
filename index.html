@@ -227,22 +227,28 @@ function scaleScene() {
   const baseWidth = 1400;
   const baseHeight = 900;
 
+  const paddingTop = 120; // matches wrapper spacing
+  const availableHeight = window.innerHeight - paddingTop;
+
   const scaleX = window.innerWidth / baseWidth;
-  const scaleY = window.innerHeight / baseHeight;
+  const scaleY = availableHeight / baseHeight;
 
   let scale = Math.min(scaleX, scaleY);
 
-  // 🔥 IMPORTANT: don't shrink too much
-  scale = Math.max(scale, 0.75); 
+  // 🔥 limits
+  const MIN_SCALE = 0.7;
+  const MAX_SCALE = 1.1;
 
-  scene.style.transform = `scale(${scale})`;
-
-  // 🔥 if screen is too small → allow scrolling instead of shrinking more
-  if (scale <= 0.75) {
+  if (scale < MIN_SCALE) {
+    scale = 1;  // stop shrinking → use scroll instead
     document.body.style.overflow = "auto";
   } else {
     document.body.style.overflow = "hidden";
   }
+
+  scale = Math.min(scale, MAX_SCALE);
+
+  scene.style.transform = `scale(${scale})`;
 }
 
 window.addEventListener('resize', scaleScene);
