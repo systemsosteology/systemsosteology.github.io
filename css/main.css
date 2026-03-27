@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
 
-  min-height: 100vh;   /* instead of fixed height */
+  min-height: 100dvh;   /* instead of fixed height */
   overflow: auto;      /* 🔥 allow scroll if needed */
 
   background-color: #112A46;
@@ -12,13 +12,15 @@ body {
 }
 
 .scene-wrapper {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100dvh;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+
+  align-items: flex-start;   /* 🔥 KEY FIX (not center anymore) */
+
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
 }
 
 .scene {
