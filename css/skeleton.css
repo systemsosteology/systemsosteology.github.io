@@ -1,0 +1,43 @@
+.skeleton-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Skeleton */
+.skeleton-img {
+  width: 340px;
+  filter: brightness(1.4);
+  transition: 0.4s;
+}
+
+.skeleton-img:hover {
+  filter: brightness(1.6);
+}
+
+/* Title */
+.skeleton-title {
+  position: absolute;
+  top: -170px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.skeleton-title h2 {
+  font-size: 44px;
+}
+
+/* Subtitle */
+.skeleton-subtitle {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.skeleton-container:hover .skeleton-subtitle {
+  opacity: 1;
+}

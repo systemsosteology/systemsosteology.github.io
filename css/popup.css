@@ -1,0 +1,44 @@
+.overlay-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+
+  opacity: 0;
+  pointer-events: none;
+  padding: 30px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.overlay-content.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+/* Colors */
+#researchContent {
+  background: rgba(241, 209, 92, 0.95);
+  color: #112A46;
+ transform: translate(-50%, -50%) translate(258px, -330px);
+
+}
+
+#projectsContent {
+  background: rgba(110, 199, 255, 0.95);
+    transform: translate(-50%, -50%) translate(-275px, -260px);
+
+}
+
+#publicationsContent {
+  background: rgba(232, 23, 23, 0.95);
+    transform: translate(-50%, -50%) translate(-275px, 170px);
+
+}
+
+#contactContent {
+  background: rgba(20, 60, 70, 0.95);
+    transform: translate(-50%, -50%) translate(235px, 210px);
+
+}

@@ -1,0 +1,14 @@
+.scene-wrapper {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene {
+  width: 1400px;
+  height: 900px;
+  position: relative;
+
+  transform-origin: center center;
+}

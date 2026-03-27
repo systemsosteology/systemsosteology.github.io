@@ -1,0 +1,41 @@
+/* Cards */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.card {
+  background: rgba(120,180,255,0.1);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* Projects */
+.project {
+  background: rgba(0,0,0,0.2);
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.contact-form button {
+  background: #80ffd4;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
