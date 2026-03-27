@@ -26,6 +26,7 @@
 
 .skeleton-title h2 {
   font-size: 44px;
+  white-space: nowrap;
 }
 
 /* Subtitle */
@@ -36,6 +37,8 @@
   transform: translateX(-50%);
   opacity: 0;
   transition: 0.4s;
+    white-space: nowrap;
+
 }
 
 .skeleton-container:hover .skeleton-subtitle {
