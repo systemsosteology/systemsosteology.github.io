@@ -10,6 +10,14 @@
 
 <body>
 
+
+<div class="scene-wrapper">
+  <div class="scene">
+    <!-- EVERYTHING you currently have (skeleton-container etc.) -->
+  </div>
+</div>
+
+
 <a href="https://osteologie.lbg.ac.at/?lang=en" target="_blank" class="logo-link">
   <img src="images/DE_Osteo_CMYK_WeissGrau.png" alt="Logo" class="logo-img">
 </a>
@@ -208,6 +216,24 @@ contents.forEach((content) => {
 document.addEventListener('click', () => {
   contents.forEach(c => c.classList.remove('active'));
 });
+</script>
+
+
+
+<script>
+function scaleScene() {
+  const scene = document.querySelector('.scene');
+
+  const scaleX = window.innerWidth / 1400;
+  const scaleY = window.innerHeight / 900;
+
+  const scale = Math.min(scaleX, scaleY);
+
+  scene.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('resize', scaleScene);
+window.addEventListener('load', scaleScene);
 </script>
 
 

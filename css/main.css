@@ -2,10 +2,30 @@
 body {
   margin: 0;
   padding: 0;
-  height: 200vh; /* just to allow scrolling for now */
-background-color: #112A46;
-  color: white; /* Recommended for readability */
+  height: 100vh;        /* full screen only */
+  overflow: hidden;     /* 🚀 disables scroll */
+  background-color: #112A46;
+  color: white;
   font-family: Arial, sans-serif;
+}
+
+.scene-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene {
+  width: 1400px;   /* 🔥 your design base width */
+  height: 900px;   /* 🔥 your design base height */
+
+  position: relative;
+
+  transform-origin: center center;
 }
 
 /* =========================
@@ -35,7 +55,7 @@ background-color: #112A46;
 
 /* Center skeleton */
 .skeleton-container {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
