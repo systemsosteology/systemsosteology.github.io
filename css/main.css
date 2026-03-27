@@ -19,7 +19,7 @@ body {
 
   align-items: flex-start;   /* 🔥 KEY FIX (not center anymore) */
 
-  padding-top: env(safe-area-inset-top);
+  padding-top: 80px;
   box-sizing: border-box;
 }
 
