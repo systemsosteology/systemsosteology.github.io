@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100dvh;
-  background-color: #112A46;
+background: radial-gradient(circle, #1a3a5a 0%, #0f2740 60%, #081a2b 100%);
   color: white;
   font-family: Arial, sans-serif;
   overflow: hidden;
@@ -25,4 +25,90 @@ body {
 .logo-img:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+}
+
+
+/* =========================
+   CENTRAL GLOW CORE
+========================= */
+.core-light {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  z-index: 10000; /* 🔥 above everything */
+
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.9) 0%,
+    rgba(120,200,255,0.6) 30%,
+    rgba(120,200,255,0.2) 60%,
+    rgba(120,200,255,0.05) 80%,
+    transparent 100%
+  );
+
+  filter: blur(10px);
+}
+
+.core-light::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle,
+    rgba(8, 133, 217, 0.4),
+    transparent 70%
+  );
+
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* Animation */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+}
+
+.core-light::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 400px;
+  height: 400px;
+
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.4) 0%,
+    transparent 60%
+  );
+
+  filter: blur(20px);
+  opacity: 0.6;
 }

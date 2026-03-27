@@ -31,7 +31,7 @@
 
   <!-- Skeleton in center -->
   <div class="skeleton-container">
-
+    
     <div class="core-light"></div>
 
     <img 
@@ -168,18 +168,31 @@
 
   <!-- JS -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const img = document.getElementById('skeleton');
+   document.addEventListener("DOMContentLoaded", () => {
+  const img = document.getElementById('skeleton');
 
-      img.addEventListener('mouseenter', () => {
-        img.src = img.dataset.gif;
-      });
+  // 1. Play GIF on first load
+  img.src = img.dataset.gif;
 
-      img.addEventListener('mouseleave', () => {
-        img.src = img.dataset.static;
-      });
-    });
+  // 2. After GIF duration → switch to static PNG
+  const gifDuration = 4000; // ⏱ adjust to your GIF length (ms)
+
+  setTimeout(() => {
+    img.src = img.dataset.static;
+  }, gifDuration);
+
+  // 3. Hover behavior (same as before)
+  img.addEventListener('mouseenter', () => {
+    img.src = img.dataset.gif;
+  });
+
+  img.addEventListener('mouseleave', () => {
+    img.src = img.dataset.static;
+  });
+});
   </script>
+
+  
 
 <script>
 const overlays = document.querySelectorAll('.overlay-img');
