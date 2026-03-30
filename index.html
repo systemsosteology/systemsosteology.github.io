@@ -170,6 +170,30 @@
 
 
 
+<!-- 🎵 MUSIC PLAYER -->
+<div class="music-player">
+  
+  <button id="playPauseBtn">▶</button>
+  
+  <div class="music-info">
+    <span>Now Playing:our Music </span>
+  </div>
+
+  <input type="range" id="progressBar" value="0">
+
+  <audio id="bgMusic" loop>
+<source src="./images/Naming_the_Pain.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
+
+
+
+
+
+
+
   <!-- JS -->
   <script>
 
@@ -293,6 +317,49 @@ function scaleScene() {
 window.addEventListener('resize', scaleScene);
 window.addEventListener('load', scaleScene);
 </script>
+
+
+<script>
+  /* =========================
+   4. MUSIC PLAYER
+========================= */
+
+const audio = document.getElementById("bgMusic");
+const btn = document.getElementById("playPauseBtn");
+const progress = document.getElementById("progressBar");
+
+let isPlaying = false;
+
+btn.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  if (isPlaying) {
+    audio.pause();
+    btn.textContent = "▶";
+  } else {
+    audio.play();
+    btn.textContent = "⏸";
+  }
+
+  isPlaying = !isPlaying;
+});
+
+// update progress bar
+audio.addEventListener("timeupdate", () => {
+  const value = (audio.currentTime / audio.duration) * 100;
+  progress.value = value || 0;
+});
+
+// seek
+progress.addEventListener("input", () => {
+  audio.currentTime = (progress.value / 100) * audio.duration;
+});
+</script>
+
+
+
+
+
 
 
 </body>
