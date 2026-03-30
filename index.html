@@ -15,21 +15,20 @@
 </head>
 
 <body>
-
-
-<div class="scene-wrapper">
-  <div class="scene">
-    <!-- EVERYTHING you currently have (skeleton-container etc.) -->
-  </div>
-</div>
-
-
+  
 <a href="https://osteologie.lbg.ac.at/?lang=en" target="_blank" class="logo-link">
   <img src="images/DE_Osteo_CMYK_WeissGrau.png" alt="Logo" class="logo-img">
 </a>
 
 
-  <!-- Skeleton in center -->
+ 
+
+
+
+<div class="scene-wrapper">
+  <div class="scene">
+    <!-- EVERYTHING you currently have (skeleton-container etc.) -->
+      <!-- Skeleton in center -->
   <div class="skeleton-container">
     
     <div class="core-light"></div>
@@ -53,14 +52,15 @@
     </div>
 
 
-        <!-- Proteomics overlay -->
-  <img 
-    src="images/final_proteomics.png"
-    class="overlay-img"
-    alt="Proteomics">
+<!-- Proteomics overlay -->
+<!-- Research -->
+<img 
+  src="images/final_proteomics.png"
+  class="overlay-img"
+  data-target="researchContent"
+  alt="Proteomics">
 
-<!-- Floating Research Title -->
-<div class="overlay-label" id="researchLabel">
+<div class="overlay-label" data-target="researchContent">
   Research Focus
 </div>
 
@@ -78,13 +78,14 @@
 
 
 <!-- DNA / Projects overlay -->
+<!-- Projects -->
 <img 
   src="images/final-DNA.png"
   class="overlay-img projects-img"
+  data-target="projectsContent"
   alt="Projects">
 
-<!-- Projects Label -->
-<div class="overlay-label projects-label">
+<div class="overlay-label projects-label" data-target="projectsContent">
   Projects
 </div>
 
@@ -108,13 +109,14 @@
 
 
 <!-- Metabolomics / Publications overlay -->
+<!-- Publications -->
 <img 
   src="images/final-metabol.png"
   class="overlay-img publications-img"
+  data-target="publicationsContent"
   alt="Publications">
 
-<!-- Publications Label -->
-<div class="overlay-label publications-label">
+<div class="overlay-label publications-label" data-target="publicationsContent">
   Publications
 </div>
 
@@ -128,14 +130,16 @@
 
 </div>
 
+
 <!-- RNA / Contact overlay -->
+<!-- Contact -->
 <img 
   src="images/final-RNA.png"
   class="overlay-img contact-img"
+  data-target="contactContent"
   alt="Contact">
 
-<!-- Contact Label -->
-<div class="overlay-label contact-label">
+<div class="overlay-label contact-label" data-target="contactContent">
   Connect
 </div>
 
@@ -157,72 +161,52 @@
 </div>
 
 
-
-
   </div>
 
-
+  </div>
+</div>
 
 
 
 
   <!-- JS -->
   <script>
-   document.addEventListener("DOMContentLoaded", () => {
-  const img = document.getElementById('skeleton');
+document.addEventListener("DOMContentLoaded", () => {
 
-  // 1. Play GIF on first load
-  img.src = img.dataset.gif;
+  const triggers = document.querySelectorAll(
+    '.overlay-img, .overlay-label'
+  );
 
-  // 2. After GIF duration → switch to static PNG
-  const gifDuration = 4000; // ⏱ adjust to your GIF length (ms)
+  const contents = document.querySelectorAll('.overlay-content');
 
-  setTimeout(() => {
-    img.src = img.dataset.static;
-  }, gifDuration);
+  triggers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
 
-  // 3. Hover behavior (same as before)
-  img.addEventListener('mouseenter', () => {
-    img.src = img.dataset.gif;
+      contents.forEach(c => c.classList.remove('active'));
+
+      const targetId = el.dataset.target;
+      if (targetId) {
+        document.getElementById(targetId).classList.add('active');
+      }
+    });
   });
 
-  img.addEventListener('mouseleave', () => {
-    img.src = img.dataset.static;
+  // PREVENT closing when clicking inside popup
+  contents.forEach((content) => {
+    content.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
   });
-});
-  </script>
 
-  
-
-<script>
-const overlays = document.querySelectorAll('.overlay-img');
-const contents = document.querySelectorAll('.overlay-content');
-
-// OPEN popup
-overlays.forEach((overlay) => {
-  overlay.addEventListener('click', (e) => {
-
-    e.stopPropagation(); // prevent background click
-
-    // close all first
+  // CLOSE when clicking outside
+  document.addEventListener('click', () => {
     contents.forEach(c => c.classList.remove('active'));
-
-    // open correct one
-    if (overlay.classList.contains('projects-img')) {
-      document.getElementById('projectsContent').classList.add('active');
-
-    } else if (overlay.classList.contains('publications-img')) {
-      document.getElementById('publicationsContent').classList.add('active');
-
-    } else if (overlay.classList.contains('contact-img')) {
-      document.getElementById('contactContent').classList.add('active');
-
-    } else {
-      document.getElementById('researchContent').classList.add('active');
-    }
-
   });
+
 });
+
+
 
 // PREVENT closing when clicking inside popup
 contents.forEach((content) => {

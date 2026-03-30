@@ -19,19 +19,20 @@
 /* Title */
 .skeleton-title {
   position: absolute;
-  transform: translate(-50px, -600px);
+  transform: translate(-10px, -560px);
 
 }
 
 .skeleton-title h2 {
-  font-size: 44px;
+  font-size: 30px;
   white-space: nowrap;
+
 }
 
 /* Subtitle */
 .skeleton-subtitle {
   position: absolute;
-  transform: translate(-50px, -530px);
+  transform: translate(-50px, -510px);
   opacity: 0.4;
   transition: 0.4s;
     white-space: nowrap;

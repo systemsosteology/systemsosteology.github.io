@@ -4,62 +4,73 @@
   left: 50%;
   transform-origin: center;
   cursor: pointer;
-  transition: 0.3s;
+  transition: filter 0.3s ease; /* only animate what you use */
 }
 
-/* === Research (left big) === */
+/* === Research (default) === */
 .overlay-img:not(.projects-img):not(.publications-img):not(.contact-img) {
-  transform: translate(-50%, -50%) translate(138px, -110px);
+  transform: translate(calc(-50% + 138px), calc(-50% - 110px));
   width: 260px;
 }
 
-/* === Projects (top-left small) === */
+/* === Projects === */
 .projects-img {
-  transform: translate(-50%, -50%) translate(-120px, -120px) rotate(120deg);
+  transform: translate(calc(-50% - 120px), calc(-50% - 120px)) rotate(120deg);
   width: 80px;
 }
 
-/* === Publications (bottom-left) === */
+/* === Publications === */
 .publications-img {
-  transform: translate(-50%, -50%) translate(-125px, 10px) rotate(-55deg);
+  transform: translate(calc(-50% - 125px), calc(-50% + 10px)) rotate(-55deg);
   width: 250px;
 }
 
-/* === Contact (right side) === */
+/* === Contact === */
 .contact-img {
-  transform: translate(-50%, -50%) translate(105px, 10px) rotate(210deg);
+  transform: translate(calc(-50% + 105px), calc(-50% + 10px)) rotate(210deg);
   width: 220px;
 }
 
-/* Hover */
+/* Hover (no movement ✔) */
 .overlay-img:hover {
-  filter: brightness(1.4) drop-shadow(0 0 20px rgba(120,180,255,0.8));
+  filter: brightness(1.25) drop-shadow(0 0 12px rgba(120, 180, 255, 0.7));
 }
 
-/* Labels */
+
+/* === LABELS === */
 .overlay-label {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(188px, -230px);
+  transform: translate(calc(-50% + 188px), calc(-50% - 200px));
+
   color: rgb(233, 209, 51);
   font-size: 20px;
   font-weight: bold;
-  pointer-events: none;
+
+  cursor: pointer;
+  pointer-events: auto;
+  transition: filter 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Individual label offsets */
+/* Hover (no movement ✔) */
+.overlay-label:hover {
+  filter: brightness(1.2);
+  text-shadow: 0 0 6px rgba(255,255,255,0.5);
+}
+
+/* Individual label positions */
 .projects-label {
-  transform: translate(-200px, -204px);
+  transform: translate(calc(-50% - 200px), calc(-50% - 204px));
   color: rgb(40, 165, 243);
 }
 
 .publications-label {
-  transform: translate(-280px, 100px);
+  transform: translate(calc(-50% - 280px), calc(-50% + 100px));
   color: rgb(213, 35, 35);
 }
 
 .contact-label {
-  transform: translate(190px, 60px);
+  transform: translate(calc(-50% + 190px), calc(-50% + 60px));
   color: rgb(100, 220, 100);
 }
