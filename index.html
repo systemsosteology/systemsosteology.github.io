@@ -41,6 +41,7 @@
       id="skeleton"
       alt="Skeleton">
     
+      <div class="skeleton-control" id="skeletonControl">⏸</div>
       <!-- FIXED TITLE (always visible) -->
     <div class="skeleton-title">
     <h2>Systems Osteology</h2>
@@ -171,8 +172,46 @@
 
   <!-- JS -->
   <script>
-document.addEventListener("DOMContentLoaded", () => {
 
+  document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     1. SKELETON GIF TOGGLE
+  ========================= */
+const container = document.querySelector('.skeleton-container');
+const img = document.getElementById('skeleton');
+const control = document.getElementById('skeletonControl');
+
+if (img && control) {
+  img.src = img.dataset.gif;
+
+  let isStatic = false;
+
+container.addEventListener('click', (e) => {
+  e.stopPropagation();
+
+    // ✅ ONLY react if skeleton image is clicked
+    if (!e.target.closest('#skeleton')) return;
+
+    e.stopPropagation();
+
+    if (isStatic) {
+      img.src = img.dataset.gif;
+      control.textContent = "⏸";
+      isStatic = false;
+    } else {
+      img.src = img.dataset.static;
+      control.textContent = "▶";
+      isStatic = true;
+    }
+
+  });
+}
+
+
+  /* =========================
+     2. OVERLAY CLICK SYSTEM
+  ========================= */
   const triggers = document.querySelectorAll(
     '.overlay-img, .overlay-label'
   );
@@ -183,8 +222,10 @@ document.addEventListener("DOMContentLoaded", () => {
     el.addEventListener('click', (e) => {
       e.stopPropagation();
 
+      // close all
       contents.forEach(c => c.classList.remove('active'));
 
+      // open target
       const targetId = el.dataset.target;
       if (targetId) {
         document.getElementById(targetId).classList.add('active');
@@ -192,32 +233,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // PREVENT closing when clicking inside popup
+
+  /* =========================
+     3. POPUP BEHAVIOR
+  ========================= */
+
+  // prevent closing when clicking inside popup
   contents.forEach((content) => {
     content.addEventListener('click', (e) => {
       e.stopPropagation();
     });
   });
 
-  // CLOSE when clicking outside
+  // close when clicking outside
   document.addEventListener('click', () => {
     contents.forEach(c => c.classList.remove('active'));
   });
 
-});
-
-
-
-// PREVENT closing when clicking inside popup
-contents.forEach((content) => {
-  content.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-});
-
-// CLOSE when clicking anywhere else
-document.addEventListener('click', () => {
-  contents.forEach(c => c.classList.remove('active'));
 });
 </script>
 

@@ -3,6 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
 }
 
 /* Skeleton */
@@ -10,7 +11,40 @@
   width: 260px;
   filter: brightness(1.4);
   transition: 0.4s;
+    position: relative;   /* ✅ ensures stacking context */
+  
 }
+
+.skeleton-control {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+    transform: translate(calc(-50% + 100px), calc(-50% + 390px));
+  
+  font-size: 50px;
+  color: white;
+
+  z-index: 5; /* lower than overlays, higher than skeleton */
+  pointer-events: none;
+
+  text-shadow: 0 0 15px rgba(255,255,255,0.9);
+  cursor: pointer;
+}
+
+.skeleton-control::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+
 
 .skeleton-img:hover {
   filter: brightness(1.6);
@@ -19,8 +53,10 @@
 /* Title */
 .skeleton-title {
   position: absolute;
-  transform: translate(-10px, -560px);
-
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
 .skeleton-title h2 {
@@ -32,13 +68,16 @@
 /* Subtitle */
 .skeleton-subtitle {
   position: absolute;
-  transform: translate(-50px, -510px);
-  opacity: 0.4;
-  transition: 0.4s;
-    white-space: nowrap;
-
+  bottom: 455px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
 }
 
 .skeleton-container:hover .skeleton-subtitle {
   opacity: 1;
 }
+
+
