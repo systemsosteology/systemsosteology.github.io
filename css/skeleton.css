@@ -19,13 +19,13 @@
   position: absolute;
   top: 50%;
   left: 50%;
-    transform: translate(calc(-50% + 100px), calc(-50% + 390px));
+    transform: translate(calc(-50% - 120px), calc(-50% + 220px));
   
-  font-size: 50px;
+  font-size: 30px;
   color: white;
 
   z-index: 5; /* lower than overlays, higher than skeleton */
-  pointer-events: none;
+  pointer-events: auto; /* allows clicking */
 
   text-shadow: 0 0 15px rgba(255,255,255,0.9);
   cursor: pointer;
@@ -34,8 +34,8 @@
 .skeleton-control::before {
   content: "";
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   background: rgba(0,0,0,0.3);
   border-radius: 50%;
   top: 50%;

@@ -187,14 +187,7 @@ if (img && control) {
 
   let isStatic = false;
 
-container.addEventListener('click', (e) => {
-  e.stopPropagation();
-
-    // ✅ ONLY react if skeleton image is clicked
-    if (!e.target.closest('#skeleton')) return;
-
-    e.stopPropagation();
-
+  function toggleSkeleton() {
     if (isStatic) {
       img.src = img.dataset.gif;
       control.textContent = "⏸";
@@ -204,7 +197,18 @@ container.addEventListener('click', (e) => {
       control.textContent = "▶";
       isStatic = true;
     }
+  }
 
+  // ✅ click on image
+  img.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleSkeleton();
+  });
+
+  // ✅ click on control
+  control.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleSkeleton();
   });
 }
 
