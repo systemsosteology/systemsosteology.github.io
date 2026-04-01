@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100dvh;
-background: radial-gradient(circle, #1a3a5a 0%, #0f2740 60%, #081a2b 100%);
+background: radial-gradient(circle, #0a1a2a 0%, #102a40 50%, #2a5d85 100%);
   color: white;
   font-family: Arial, sans-serif;
   overflow: hidden;
