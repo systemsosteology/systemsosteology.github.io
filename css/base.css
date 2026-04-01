@@ -37,7 +37,7 @@ background: radial-gradient(circle, #1a3a5a 0%, #0f2740 60%, #081a2b 100%);
 
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -80%);
 
   width: 180px;
   height: 180px;
@@ -47,14 +47,14 @@ background: radial-gradient(circle, #1a3a5a 0%, #0f2740 60%, #081a2b 100%);
   z-index: 1000; /* 🔥 above everything */
 
   background: radial-gradient(circle,
-    rgba(255,255,255,0.9) 0%,
-    rgba(120,200,255,0.6) 30%,
+    rgba(255,255,255,1) 0%,
+    rgba(120,200,255,0.9) 30%,
     rgba(120,200,255,0.2) 60%,
     rgba(120,200,255,0.05) 80%,
     transparent 100%
   );
 
-  filter: blur(10px);
+  filter: blur(5px);
 }
 
 .core-light::after {

@@ -51,13 +51,13 @@
 }
 
 #researchContent::before {
-  background: linear-gradient(45deg, #ffd86b, #ffb300);
+  background: linear-gradient(45deg, #d8b34e, #513c0d);
 }
 
 #researchContent {
   background: rgba(255, 215, 100, 0.15);
   border: 1px solid rgba(255, 215, 100, 0.5);
-  color: #112A46;
+  
 }
 
 
@@ -108,7 +108,7 @@
 
   max-width: 380px;
   width: 90%;
-  z-index: 9999;
+  z-index: 100000;
   color: rgb(255, 255, 255);
   display: flex;              /* ADD */
   justify-content: center;    /* center horizontally */

@@ -17,9 +17,9 @@
 
 .skeleton-control {
   position: absolute;
-  top: 50%;
-  left: 50%;
-    transform: translate(calc(-50% - 120px), calc(-50% + 240px));
+  bottom: -10px;
+  right: -13%;
+  transform: translateX(-50%);
   
   font-size: 15px;
   color: white;

@@ -15,7 +15,7 @@
 
 /* === Projects === */
 .projects-img {
-  transform: translate(calc(-50% - 120px), calc(-50% - 120px)) rotate(120deg);
+  transform: translate(calc(-50% - 120px), calc(-50% - 110px)) rotate(110deg);
   width: 80px;
 }
 
@@ -62,12 +62,12 @@
 
 /* Individual label positions */
 .projects-label {
-  transform: translate(calc(-50% - 165px), calc(-50% - 210px));
+  transform: translate(calc(-50% - 195px), calc(-50% - 190px));
   color: rgb(40, 165, 243);
 }
 
 .publications-label {
-  transform: translate(calc(-50% - 280px), calc(-50% + 100px));
+  transform: translate(calc(-50% - 210px), calc(-50% + 100px));
   color: rgb(213, 35, 35);
 }
 
