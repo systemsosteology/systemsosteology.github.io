@@ -51,6 +51,7 @@
   cursor: pointer;
   pointer-events: auto;
   transition: filter 0.3s ease, text-shadow 0.3s ease;
+  white-space: nowrap;
 }
 
 /* Hover (no movement ✔) */
@@ -61,7 +62,7 @@
 
 /* Individual label positions */
 .projects-label {
-  transform: translate(calc(-50% - 200px), calc(-50% - 204px));
+  transform: translate(calc(-50% - 165px), calc(-50% - 210px));
   color: rgb(40, 165, 243);
 }
 
