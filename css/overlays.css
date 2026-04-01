@@ -21,8 +21,8 @@
 
 /* === Publications === */
 .publications-img {
-  transform: translate(calc(-50% - 125px), calc(-50% + 10px)) rotate(-55deg);
-  width: 250px;
+  transform: translate(calc(-50% - 125px), calc(-50% + 10px)) rotate(-25deg);
+  width: 230px;
 }
 
 /* === Contact === */
