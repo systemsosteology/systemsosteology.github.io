@@ -33,6 +33,7 @@ background: radial-gradient(circle, #1a3a5a 0%, #0f2740 60%, #081a2b 100%);
 ========================= */
 .core-light {
   position: absolute;
+  pointer-events: none;
 
   top: 50%;
   left: 50%;
@@ -43,7 +44,7 @@ background: radial-gradient(circle, #1a3a5a 0%, #0f2740 60%, #081a2b 100%);
 
   border-radius: 50%;
 
-  z-index: 10000; /* 🔥 above everything */
+  z-index: 1000; /* 🔥 above everything */
 
   background: radial-gradient(circle,
     rgba(255,255,255,0.9) 0%,
