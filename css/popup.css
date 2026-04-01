@@ -27,13 +27,6 @@
 
 
 
-#projectsContent {
-  background: rgba(110, 199, 255, 0.95);
-    transform: translate(-50%, -50%) translate(-320px, -100px);
-z-index: 10001 ;
-}
-
-
 
 #publicationsContent {
   background: rgba(232, 23, 23, 0.95);
@@ -45,4 +38,117 @@ z-index: 10001 ;
   background: rgba(20, 60, 70, 0.95);
     transform: translate(-50%, -50%) translate(235px, 210px);
 
+}
+
+
+
+
+/* =========================
+   PROJECTS (UNIFIED GLOW)
+========================= */
+
+#projectsContent {
+  
+  text-align: center;
+  position: absolute;
+ top: 50%;
+ left: 50%;
+  
+
+  transform: translate(-50%, -50%)translate(258px, -30px);
+
+  max-width: 380px;
+  width: 90%;
+  z-index: 9999;
+  color: rgb(255, 255, 255);
+  display: flex;              /* ADD */
+  justify-content: center;    /* center horizontally */
+  align-items: center;        /* center vertically (if needed) */
+  gap: 20px;                  /* replaces margin */
+  flex-wrap: wrap;    
+   pointer-events: auto;       /* responsive */
+}
+
+
+#projectsContent::before {
+  content: "";
+  position: absolute;
+
+  /* size slightly bigger than content */
+  inset: 1px;
+
+  background: rgb(12, 9, 178);
+  border-radius: 20px;
+
+  z-index: -1; /* stays behind projects but inside container */
+
+  /* optional: soft shadow for nicer look */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  opacity: 0.9;
+}
+
+/* =========================
+   ALL PROJECTS (BASE STYLE)
+========================= */
+#projectsContent .project {
+  display: inline-block;
+  width: 260px;
+  margin: 1px;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+
+  /* neon base */
+  background: rgba(18, 100, 195, 0.85);
+  border: 1px solid rgba(0, 140, 255, 0.5);
+
+  transition: 0.3s ease;
+}
+
+/* glowing border for ALL */
+#projectsContent .project::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #00c3ff, #005eff);
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.6;
+}
+
+/* hover for ALL */
+#projectsContent .project:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
+}
+
+/* =========================
+   OPTIONAL: small variation (if you still want difference)
+========================= */
+#projectsContent .project:first-of-type {
+  background: rgba(40, 90, 180, 0.75); /* slightly different tone */
+}
+
+/* =========================
+   TEXT
+========================= */
+#projectsContent .project h3 { margin-bottom: 10px; }
+
+#projectsContent .project p {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 15px;
+}
+
+#projectsContent .project a {
+  color: #8fd3ff;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+#projectsContent .project a:hover {
+  text-decoration: underline;
 }

@@ -89,3 +89,77 @@
   width: 100%;
   cursor: pointer;
 }
+
+
+
+
+/* =========================
+   🧬 OMICS FLOATING TEXT
+========================= */
+
+.omics-label {
+  position: absolute;
+  color: rgba(200, 210, 230, 0.6); /* soft gray-blue */
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 300;
+
+  pointer-events: none; /* don't block clicks */
+
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+/* Optional glow */
+.omics-label::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  filter: blur(6px);
+  opacity: 0.3;
+}
+
+/* =========================
+   INDIVIDUAL POSITIONS (YOU CONTROL)
+========================= */
+
+/* Metabolomics */
+.metabolomics {
+  bottom: 100px;
+  right: 200px;
+ 
+}
+
+/* Genomics */
+.genomics {
+  top: 50px;
+  right: 180px;
+  transform: rotate(15deg);
+}
+
+/* Transcriptomics */
+.transcriptomics {
+  bottom: 140px;
+  left: 180px;
+  transform: rotate(25deg);
+}
+
+/* Proteomics */
+.proteomics {
+   top: 70px;
+  left: 200px;
+
+  transform: rotate(-10deg);
+}
+
+
+@keyframes floatSoft {
+  0% { transform: translateY(0) rotate(var(--rot)); }
+  50% { transform: translateY(-5px) rotate(var(--rot)); }
+  100% { transform: translateY(0) rotate(var(--rot)); }
+}
+
+.omics-label {
+  --rot: 0deg;
+  animation: floatSoft 4s ease-in-out infinite;
+}
