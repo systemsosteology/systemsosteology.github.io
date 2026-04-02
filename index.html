@@ -305,27 +305,33 @@ function scaleScene() {
   const baseWidth = 1400;
   const baseHeight = 900;
 
-  const isMobile = window.innerWidth < 768;
+  const screenW = window.innerWidth;
+  const screenH = window.innerHeight;
+
+  const scaleX = screenW / baseWidth;
+  const scaleY = screenH / baseHeight;
 
   let scale;
 
-  if (isMobile) {
-    // 📱 MOBILE → scale based on HEIGHT (makes it bigger)
-    const availableHeight = window.innerHeight;
-    scale = availableHeight / baseHeight;
+  // 📱 Mobile (make it bigger intentionally)
+  if (screenW < 768) {
+    scale = scaleY * 1.1; // boost size on phone
+  } 
+  // 💻 Everything else (INCLUDING small laptops)
+  else {
+    scale = Math.min(scaleX, scaleY); // 🔥 always fit screen
+  }
 
-    // allow bigger scaling on mobile
-    scale = Math.max(0.85, Math.min(scale, 1.4));
+  // smooth limits (no jumps)
+  const MIN_SCALE = 0.7;
+  const MAX_SCALE = 1.2;
 
+  scale = Math.max(MIN_SCALE, Math.min(scale, MAX_SCALE));
+
+  // allow scroll only if really small
+  if (scale <= MIN_SCALE) {
     document.body.style.overflow = "auto";
-
   } else {
-    // 💻 DESKTOP → scale based on WIDTH (your current good behavior)
-    scale = window.innerWidth / baseWidth;
-
-    // tighter limits for laptops
-    scale = Math.max(0.7, Math.min(scale, 1.1));
-
     document.body.style.overflow = "hidden";
   }
 
