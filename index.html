@@ -305,33 +305,31 @@ function scaleScene() {
   const baseWidth = 1400;
   const baseHeight = 900;
 
-  const paddingTop = 120; // matches wrapper spacing
-  const availableHeight = window.innerHeight - paddingTop;
+  const isMobile = window.innerWidth < 768;
 
+  let scale;
 
+  if (isMobile) {
+    // 📱 MOBILE → scale based on HEIGHT (makes it bigger)
+    const availableHeight = window.innerHeight;
+    scale = availableHeight / baseHeight;
 
+    // allow bigger scaling on mobile
+    scale = Math.max(0.85, Math.min(scale, 1.4));
 
+    document.body.style.overflow = "auto";
 
-const scaleX = window.innerWidth / baseWidth;
+  } else {
+    // 💻 DESKTOP → scale based on WIDTH (your current good behavior)
+    scale = window.innerWidth / baseWidth;
 
-// 👉 use ONLY width-based scaling
-let scale = scaleX;
+    // tighter limits for laptops
+    scale = Math.max(0.7, Math.min(scale, 1.1));
 
-// limits
-const MIN_SCALE = 0.7;
-const MAX_SCALE = 1.1;
+    document.body.style.overflow = "hidden";
+  }
 
-// 👉 smooth clamp (NO jump!)
-scale = Math.max(MIN_SCALE, Math.min(scale, MAX_SCALE));
-
-// optional scroll behavior
-if (scale <= MIN_SCALE) {
-  document.body.style.overflow = "auto";
-} else {
-  document.body.style.overflow = "hidden";
-}
-
-scene.style.transform = `scale(${scale})`;
+  scene.style.transform = `scale(${scale})`;
 }
 
 
