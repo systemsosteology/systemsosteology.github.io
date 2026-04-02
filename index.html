@@ -328,12 +328,14 @@ function scaleScene() {
 
   // 📱 Mobile (make it bigger intentionally)
   if (screenW < 768) {
-    scale = scaleY * 1.1; // boost size on phone
+    scale = scaleY * 1.4; // boost size on phone
   } 
   // 💻 Everything else (INCLUDING small laptops)
   else {
-    scale = Math.min(scaleX, scaleY)* 1.3; // 🔥 always fit screen
+    scale = Math.min(scaleX, scaleY); // 🔥 always fit screen
   }
+  // clamp
+ scale = Math.max(0.7, Math.min(scale, 1.2));
 
   // smooth limits (no jumps)
   const MIN_SCALE = 0.7;
