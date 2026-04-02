@@ -308,26 +308,34 @@ function scaleScene() {
   const paddingTop = 120; // matches wrapper spacing
   const availableHeight = window.innerHeight - paddingTop;
 
-  const scaleX = window.innerWidth / baseWidth;
-  const scaleY = availableHeight / baseHeight;
 
-  let scale = Math.min(scaleX, scaleY);
 
-  // 🔥 limits
-  const MIN_SCALE = 0.7;
-  const MAX_SCALE = 1.1;
 
-  if (scale < MIN_SCALE) {
-    scale = 1;  // stop shrinking → use scroll instead
-    document.body.style.overflow = "auto";
-  } else {
-    document.body.style.overflow = "hidden";
-  }
 
-  scale = Math.min(scale, MAX_SCALE);
+const scaleX = window.innerWidth / baseWidth;
 
-  scene.style.transform = `scale(${scale})`;
+// 👉 use ONLY width-based scaling
+let scale = scaleX;
+
+// limits
+const MIN_SCALE = 0.7;
+const MAX_SCALE = 1.1;
+
+// 👉 smooth clamp (NO jump!)
+scale = Math.max(MIN_SCALE, Math.min(scale, MAX_SCALE));
+
+// optional scroll behavior
+if (scale <= MIN_SCALE) {
+  document.body.style.overflow = "auto";
+} else {
+  document.body.style.overflow = "hidden";
 }
+
+scene.style.transform = `scale(${scale})`;
+}
+
+
+
 
 window.addEventListener('resize', scaleScene);
 window.addEventListener('load', scaleScene);
