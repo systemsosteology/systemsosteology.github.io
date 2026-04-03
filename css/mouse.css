@@ -1,26 +1,67 @@
+/* hide default cursor */
+body {
+  cursor: none;
+}
+
 /* =========================
-   CUSTOM BONE CURSOR
+   ORBIT CURSOR
 ========================= */
 
-/* default cursor (everywhere) */
-body {
-  cursor: url("/images/bone-cursor.png") 16 16, auto;
+.cursor {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: #00bfff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
 }
 
-/* clickable elements */
-a,
-button,
-.overlay-img,
-.overlay-label,
-.skeleton-control {
-  cursor: url("/images/bone-cursor-click.png") 32 32, pointer;
+/* orbit ring */
+.cursor-ring {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 191, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out;
 }
 
-/* optional: text areas */
-input,
-textarea {
-  cursor: text;
+/* hover effect */
+.cursor.hover {
+  transform: translate(-50%, -50%) scale(1.8);
+  background: #ffffff;
+}
+
+.cursor-ring.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  border-color: #ffffff;
 }
 
 
+/* =========================
+   DNA DOUBLE ORBIT
+========================= */
 
+.cursor-dot {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: #00bfff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px #00bfff;
+}
+
+/* second strand slightly different color */
+.dot2 {
+  background: #ffffff;
+  box-shadow: 0 0 6px #ffffff;
+}

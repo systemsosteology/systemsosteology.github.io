@@ -19,6 +19,7 @@
 
 <body>
   
+ 
 <a href="https://osteologie.lbg.ac.at/?lang=en" target="_blank" class="logo-link">
   <img src="images/DE_Osteo_CMYK_WeissGrau.png" alt="Logo" class="logo-img">
 </a>
@@ -222,6 +223,7 @@
 
 
   <!-- JS -->
+
   <script>
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -305,8 +307,135 @@ if (img && control) {
     contents.forEach(c => c.classList.remove('active'));
   });
 
+
+
+  /* =========================
+   ORBIT CURSOR JS
+========================= */
+
+const cursor = document.querySelector(".cursor");
+const ring = document.querySelector(".cursor-ring");
+
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  cursor.style.left = mouseX + "px";
+  cursor.style.top = mouseY + "px";
+});
+
+function animate() {
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+
+  ring.style.left = ringX + "px";
+  ring.style.top = ringY + "px";
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+/* hover effect on clickable items */
+const hoverItems = document.querySelectorAll(
+  "a, button, .overlay-img, .overlay-label, .skeleton-control"
+);
+
+hoverItems.forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    cursor.classList.add("hover");
+    ring.classList.add("hover");
+  });
+
+  el.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover");
+    ring.classList.remove("hover");
+  });
+});
+document.addEventListener("mousedown", () => {
+  cursor.style.transform = "translate(-50%, -50%) scale(0.6)";
+});
+
+document.addEventListener("mouseup", () => {
+  cursor.style.transform = "translate(-50%, -50%) scale(1)";
+});
+
+/* =========================
+   DNA ORBIT MOTION
+========================= */
+
+const dot1 = document.querySelector(".dot1");
+const dot2 = document.querySelector(".dot2");
+
+let angle = 0;
+
+function animateDNA() {
+  angle += 0.02;
+
+  const distance = getDistanceToSkeleton();
+
+  // 🔥 attraction strength (tweak this!)
+  const influenceRadius = 300;
+
+  let factor = Math.max(0, 1 - distance / influenceRadius);
+
+  // clamp
+  factor = Math.min(Math.max(factor, 0), 1);
+
+  // 🧬 dynamic radius (tightens near skeleton)
+  const radius = 14 - factor * 6;
+
+  // ⚡ speed increases near skeleton
+  angle += factor * 0.2;
+
+  const x1 = mouseX + Math.cos(angle) * radius;
+  const y1 = mouseY + Math.sin(angle) * radius * 0.7;
+
+  const x2 = mouseX + Math.cos(angle + Math.PI) * radius;
+  const y2 = mouseY + Math.sin(angle + Math.PI) * radius * 0.7;
+
+  dot1.style.left = x1 + "px";
+  dot1.style.top = y1 + "px";
+
+  dot2.style.left = x2 + "px";
+  dot2.style.top = y2 + "px";
+
+  // ✨ glow boost near skeleton
+  const glow = 10 + factor * 20;
+  dot1.style.boxShadow = `0 0 ${glow}px #00bfff`;
+  dot2.style.boxShadow = `0 0 ${glow}px #ffffff`;
+
+  requestAnimationFrame(animateDNA);
+}
+
+const skeleton = document.getElementById("skeleton");
+function getDistanceToSkeleton() {
+  const rect = skeleton.getBoundingClientRect();
+
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const dx = mouseX - centerX;
+  const dy = mouseY - centerY;
+
+  return Math.sqrt(dx * dx + dy * dy);
+}
+animateDNA();
+
+
+
+
 });
 </script>
+
+
+
+
+
+
 
 
 
@@ -423,6 +552,13 @@ progress.addEventListener("input", () => {
 
 
 
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- DNA orbit dots -->
+<div class="cursor-dot dot1"></div>
+<div class="cursor-dot dot2"></div>
 
 </body>
 </html>
